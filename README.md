@@ -54,16 +54,8 @@ Describe your project
 :heavy_check_mark: Feature 2;\
 :heavy_check_mark: Feature 3;
 
-## :rocket: Technologies ##
+##
 
-The following tools were used in this project:
-
-- [Expo](https://expo.io/)
-- [Node.js](https://nodejs.org/en/)
-- [React](https://pt-br.reactjs.org/)
-- [React Native](https://reactnative.dev/)
-- [TypeScript](https://www.typescriptlang.org/)
-
-Made with :heart: by <a href="https://github.com/{{Courinha768}}" target="_blank">{{Courinha}}</a>
+Made with :heart: by <a href="https://github.com/{{Courinha768}}" target="_blank">Courinha</a>
 
 <a href="#top">Back to top</a>
