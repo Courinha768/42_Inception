@@ -21,8 +21,6 @@
 	🚧  42_Inception 🚀 Under construction...  🚧
 </h4> 
 
-<hr> -->
-
 ## :dart: About ##
 
 This project aims to broaden your knowledge of system administration by using Docker.
