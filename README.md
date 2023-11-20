@@ -1,8 +1,8 @@
-<div align="center" id="top"> 
+<!-- <div align="center" id="top"> 
   <img src="./.github/app.gif" alt="42_Inception" />
 
   &#xa0;
-</div>
+</div> -->
 
 <h1 align="center">42_Inception</h1>
 
