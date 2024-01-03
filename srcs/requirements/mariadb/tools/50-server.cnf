@@ -53,7 +53,7 @@ innodb_file_per_table			=	1
 innodb_flush_log_at_trx_commit	=	2
 
 # Security settings (change these!)
-max_connections		=	100
+max_connections		=	4
 query_cache_type	=	1
 query_cache_limit	=	1M
 query_cache_size	=	16M
