@@ -10,6 +10,6 @@ RUN chown -R mysql:mysql /run/mysqld
 COPY ./tools/50-server.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY ./tools/script.sh /
 
-EXPOSE 3306
+# EXPOSE 3306
 
 CMD ["./script.sh"]
