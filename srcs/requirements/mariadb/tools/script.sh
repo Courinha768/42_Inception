@@ -1,8 +1,6 @@
 #!/bin/bash
 
-mysqld --user=mysql --initialize-insecure --datadir=/var/lib/mysql
-
-mysqld --user=mysql --socket=/var/run/mysqld/mysqld.sock &
+mysqld 
 
 echo "CREATE DATABASE IF NOT EXISTS $MYSQL_DATABASE ;" > db1.sql
 echo "CREATE USER IF NOT EXISTS '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD' ;" >> db1.sql
@@ -12,6 +10,6 @@ echo "FLUSH PRIVILEGES;" >> db1.sql
 
 mysql < db1.sql
 
-mysqladmin shutdown
+kill $(cat /run/mysqld/mysqld.pid)
 
-mysqld --user=mysql --socket=/var/run/mysqld/mysqld.sock
+mysqld
