@@ -2,21 +2,7 @@ version: '3'
 
 services:
 
-  my_project_wordpress:
-    build:
-      context: ./requirements/wordPress
-    restart: always
-    env_file: .env
-    volumes:
-      - my_project_wordpress_data:/var/www/html
-    ports:
-      - "8080:9000"
-    depends_on:
-      - my_project_mariadb
-    networks:
-      - my_network
-
-  my_project_nginx:
+  nginx:
     build:
       context: ./requirements/nginx
     restart: always
@@ -24,22 +10,33 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - my_project_nginx_conf:/etc/nginx/conf.d
-      - my_project_wordpress_data:/var/www/html
+      - wordpress:/var/www/html
     depends_on:
-      - my_project_wordpress
-      - my_project_mariadb
+      - wordpress
+      - mariadb
     networks:
       - my_network 
 
-  my_project_mariadb:
+  wordpress:
+    build:
+      context: ./requirements/wordPress
+    restart: always
+    env_file: .env
+    volumes:
+      - wordpress:/var/www/html
+    depends_on:
+      - mariadb
+    networks:
+      - my_network
+
+  mariadb:
     container_name: mariadb
     build: requirements/mariadb/
     restart: always
     networks:
       - my_network
     volumes:
-      - my_project_db:/var/lib/mysql
+      - db:/var/lib/mysql
     env_file: .env
 
 networks:
@@ -47,6 +44,5 @@ networks:
     driver: bridge
 
 volumes:
-  my_project_db:
-  my_project_wordpress_data:
-  my_project_nginx_conf:
+  db:
+  wordpress:

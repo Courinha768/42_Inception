@@ -1,18 +1,24 @@
 FROM debian:bullseye
 
-RUN apt-get update && \
-    apt-get install -y \
-        php7.4-fpm \
-        php7.4-mysql \
-        php7.4-curl \
-        php7.4-gd \
-        php7.4-intl \
-        php7.4-mbstring \
-        php7.4-xml \
-        php7.4-zip \
-        curl \
-        unzip \
-        && \
+RUN apt update && \
+	apt install -y unzip \
+		php \
+		curl \
+		wget \
+		redis \
+		php-redis \
+		php-mysqli \
+		php-fpm \
+		php-cgi \
+		php-curl \
+		php-gd \
+		php-mbstring \
+		php-xml \
+		php-xmlrpc \
+		php-soap \
+		php-intl \
+		php-zip \
+		default-mysql-client && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -p /run/php && \

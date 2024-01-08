@@ -1,8 +1,8 @@
 #!/bin/sh
 
-service mysql start 
-
 sleep 10
+
+service mysql start 
 
 echo "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" | mysql
 
