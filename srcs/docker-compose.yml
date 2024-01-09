@@ -44,5 +44,17 @@ networks:
     driver: bridge
 
 volumes:
-  db:
   wordpress:
+   name: wordpress
+   driver: local
+   driver_opts:
+    device: /home/courinha/Desktop/42_Inception/srcs/wordpress
+    o: bind
+    type: none
+  db:
+   name: mariadb
+   driver: local
+   driver_opts:
+    device: /home/courinha/Desktop/42_Inception/srcs/mariadb
+    o: bind
+    type: none
