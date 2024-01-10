@@ -1,17 +1,13 @@
 FROM debian:bullseye
 
-RUN apt update -y 
 
-RUN apt install php-fpm php-mysql -y
-
-RUN apt install curl -y
+RUN apt-get update -y \
+	&& apt-get install -y iputils-ping \
+    && apt-get install -y php-fpm php-mysql php-gd php-curl php-xml \
+    && apt-get install -y curl
 
 
 COPY ./tools/script.sh /
-RUN chmod +x /script.sh 
-
 COPY ./tools/wp-config.php /
 
-
 CMD [ "/script.sh" ]
-

@@ -1,18 +1,16 @@
 #!/bin/sh
 
-sleep 10
+sleep 7
 
-service mysql start 
+service mariadb start 
 
-echo "CREATE USER '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" | mysql
+echo "CREATE USER '$MYSQL_USER'@'' IDENTIFIED BY '$MYSQL_PASSWORD';" | mariadb
+echo "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" | mariadb
+echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';" | mariadb
+echo "FLUSH PRIVILEGES;" | mariadb
+echo "CREATE DATABASE $MYSQL_DATABASE;" | mariadb
 
-echo "GRANT ALL PRIVILEGES ON *.* TO '$MYSQL_USER'@'%' IDENTIFIED BY '$MYSQL_PASSWORD';" | mysql
-echo "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '$MYSQL_ROOT_PASSWORD';" | mysql
-echo "FLUSH PRIVILEGES;" | mysql
+service mariadb stop
 
-echo "CREATE DATABASE $MYSQL_DATABASE;" | mysql
-
-kill $(cat /var/run/mysqld/mysqld.pid)
-
-mysqld
+exec mysqld --socket=/run/mysqld/mysqld.sock --pid-file=/run/mysqld/mysqld.pid
 

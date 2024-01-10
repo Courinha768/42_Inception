@@ -3,14 +3,13 @@ version: '3'
 services:
 
   nginx:
-    build:
-      context: ./requirements/nginx
+    build: ./requirements/nginx
     restart: always
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - wordpress:/var/www/html
+      - wp_data:/var/www/html
     depends_on:
       - wordpress
       - mariadb
@@ -18,43 +17,33 @@ services:
       - my_network 
 
   wordpress:
-    build:
-      context: ./requirements/wordPress
+    build: ./requirements/wordPress
     restart: always
-    env_file: .env
     volumes:
-      - wordpress:/var/www/html
+      - wp_data:/var/www/html
+    ports:
+      - "9000:80"
+    env_file: .env
     depends_on:
       - mariadb
     networks:
       - my_network
 
   mariadb:
-    container_name: mariadb
-    build: requirements/mariadb/
+    build:  ./requirements/mariadb/
     restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    env_file: .env
     networks:
       - my_network
-    volumes:
-      - db:/var/lib/mysql
-    env_file: .env
+
 
 networks:
   my_network:
     driver: bridge
 
 volumes:
-  wordpress:
-   name: wordpress
-   driver: local
-   driver_opts:
-    device: /home/courinha/Desktop/42_Inception/srcs/wordpress
-    o: bind
-    type: none
-  db:
-   name: mariadb
-   driver: local
-   driver_opts:
-    device: /home/courinha/Desktop/42_Inception/srcs/mariadb
-    o: bind
-    type: none
+  wp_data:
+  db_data:
+
