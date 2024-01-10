@@ -24,7 +24,7 @@ else
   echo "Error: BIG FUCKING ERROR MESSAGE"
 fi
 
-wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
+wp core install --url=$DOMAIN_NAME/ --title=$WP_TITLE --admin_user=$WORDPRESS_DB_USER --admin_password=$WORDPRESS_DB_PASSWORD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
 
 wp user create $WP_USR $WP_EMAIL --role=author --user_pass=$WP_PWD --allow-root
 

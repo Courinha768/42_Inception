@@ -46,14 +46,6 @@ define('SECURE_AUTH_SALT', 'J#yNX6J;uO:h<5(8tFd3%FVI3s`H^tE4d`Q2xC2PipgLfmMYoe+@
 define('LOGGED_IN_SALT',   'B,LI*D[F+|+D8c~NaEg+FW/NqV}!;!k?Q-pI_w>91@$ u3l<}QT{Wj;?al|&&=xd');
 define('NONCE_SALT',       '>M3vzLGi=e(LpU4Sve4@1S#O@S[=dq6x)+MA.%{n5xHBC$deYEq$eE#@L]j[/h;M');
 
-/**#@-*/
-
-/**
- * WordPress Database Table prefix.
- *
- * You can have multiple installations in one database if you give each
- * a unique prefix. Only numbers, letters, and underscores please!
- */
 $table_prefix = 'wp_';
 
 /** Absolute path to the WordPress directory. */
