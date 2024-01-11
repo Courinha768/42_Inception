@@ -6,7 +6,6 @@ services:
     build: ./requirements/nginx
     restart: always
     ports:
-      - "80:80"
       - "443:443"
     volumes:
       - wp_data:/var/www/html
@@ -21,8 +20,6 @@ services:
     restart: always
     volumes:
       - wp_data:/var/www/html
-    ports:
-      - "9000:80"
     env_file: .env
     depends_on:
       - mariadb
@@ -30,7 +27,7 @@ services:
       - my_network
 
   mariadb:
-    build:  ./requirements/mariadb/
+    build:  ./requirements/mariadb
     restart: always
     volumes:
       - db_data:/var/lib/mysql
@@ -45,5 +42,15 @@ networks:
 
 volumes:
   wp_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/aappleto/data/wp_data
   db_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/aappleto/data/db_data
 
